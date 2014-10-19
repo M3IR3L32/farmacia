@@ -3,9 +3,13 @@
 namespace Acme\DemoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class WelcomeController extends Controller
 {
+    /**
+     * @Route("/", name="welcomme_demo")
+     */
     public function indexAction()
     {
         /*
@@ -13,6 +17,9 @@ class WelcomeController extends Controller
          * or @Template annotation as demonstrated in DemoController.
          *
          */
+
+        $acmeOrderManager = $this->get('acme.order_manager');
+//        $orders = $acmeOrderManager->findAllOrders();
 
         return $this->render('AcmeDemoBundle:Welcome:index.html.twig');
     }
